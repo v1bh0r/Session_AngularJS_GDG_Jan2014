@@ -1,4 +1,11 @@
 <div class="col-md-12">
+  <ul class="list-unstyled">
+    <li ng-repeat="item in todoList">
+      <input type="checkbox" ng-model="item.done"/>
+      <span ng-bind="item.description"  ng-class="{'task-complete': item.done}"></span>
+      <a ng-href="#/edit/{{item.id}}">Edit</a> | <a ng-href="javascript: ;" ng-click="removeItem(item)">Delete</a>
+    </li>
+  </ul>
   <form class="form-inline" ng-submit="addItem(newTodoDescription)">
     <div class="form-group">
       <input type="text" ng-model="newTodoDescription" placeholder="Enter todo item..." required
@@ -6,12 +13,4 @@
     </div>
     <button class="btn btn-default btn-lg" type="submit">Save</button>
   </form>
-  <br/>
-  <ul class="list-unstyled">
-    <li ng-repeat="item in todoList">
-      <a ng-href="#/edit/{{item.id}}">Edit</a> | <a ng-href="javascript: ;" ng-click="removeItem(item)">Delete</a>
-      <span ng-bind="item.description"  ng-class="{'task-complete': item.done}"></span>
-      <input type="checkbox" ng-model="item.done"/>
-    </li>
-  </ul>
 </div>
