@@ -1,9 +1,9 @@
 <div class="col-md-12">
   <ul class="list-unstyled">
-    <li ng-repeat="item in todoList">
-      <input type="checkbox" ng-model="item.done"/>
-      <span ng-bind="item.description"  ng-class="{'task-complete': item.done}"></span>
-      <a ng-href="#/edit/{{item.id}}">Edit</a> | <a ng-href="javascript: ;" ng-click="removeItem(item)">Delete</a>
+    <li ng-repeat="item in todoList track by $index">
+      <input type="checkbox" ng-model="item.done" on-change="onComplete()"/>
+      <span ng-bind="item.description" ng-class="{'task-complete': item.done}"></span>
+      <a ng-href="#/todo/{{item.id}}">Details</a> | <a ng-href="javascript: ;" ng-click="removeItem(item)">Delete</a>
     </li>
   </ul>
   <form class="form-inline" ng-submit="addItem(newTodoDescription)">
